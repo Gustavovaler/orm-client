@@ -5,7 +5,7 @@ db_conection_settings = {
     'port': 3307,
     'user':'root',
     'password': '',
-    'database':'northwind',
+    'database':'base1',
     'driver':'mysql',
 
 }

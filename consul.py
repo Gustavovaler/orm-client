@@ -7,13 +7,21 @@ password = d['password']
 host = d['host']
 database = d['database']
 port = d['port']
-query = "select * from employees limit 2"
 
+class PrepareQuery:
+    def __init__(self):
+        self.query = query
+        
+#query = "insert into alumnos (matricula, nombre, apellido) values(34,'qweqwe', '222asd')"
+#query = "create table pescados (nombre varchar(60), apellido varchar (50), id int primary key auto_increment)"
+
+#query = "insert into pescados (nombre, apellido) values ('pescado2', 'apellido2');"
+#query1 = "select * from pescados"
+query = "select * from alumnos"
 
 
 class RunQuery(Connection):
     def __init__(self,query, user, password,host,database, port,**kwargs):
-        # super().__init__()
         self.user = user
         self.password = password
         self.host = host
@@ -34,12 +42,14 @@ class RunQuery(Connection):
 
     def execute_query(self):
         self.cursor.execute(self.query)
+        self.c.commit()
         self.get_data()
 
     def get_data(self):
         for data in self.cursor:
             print(data)
         self.cursor.close()
+        self.c.close()
 
 
 
